@@ -5,7 +5,6 @@ import datetime as dt
 import smtplib
 from random import choice
 import os
-import re
 # Importing the data
 birthdays = pd.read_csv("birthdays.csv")
 # Global variables
@@ -33,7 +32,7 @@ def pick_letter_replace_name(name):
     print(f"Choosing the letter file... {letter} for {name}")
     with open(letter, "r") as message:
         final_message = [line.replace("[NAME]", name) for line in message]
-    return "".join(final_message)
+    return print("".join(final_message))
 
 # 4. Send the letter generated in step 3 to that person's email address.
 def send_email(message, reciever_email):
