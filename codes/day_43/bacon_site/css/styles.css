@@ -1,0 +1,28 @@
+h1 {
+    font-size: 55px;
+    color:brown;
+}
+
+img:hover{
+    background-color: gold;
+}
+
+/*#### IDs #### */
+#heading{
+    font-size: 200px;
+}
+
+/*#### CLASSES ### */
+.bacon {
+    border-radius: 20%;
+    background-color: greenyellow;
+}
+
+.broccoli {
+    border-radius: 20%;
+    background-color: bisque;
+}
+
+.baconText {
+    color: darkblue;
+}
