@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    text-align: center;
+    background-color:azure;
+}
+
+h1 {
+    font-family: 'Sacramento', sans-serif;
+    font-size: 70px;
+    width: 20%;
+    margin: 0 auto 0 auto;
+}
+
+#initial-desc {
+    font-family: 'Merriweather', sans-serif;
+    margin: 0;
+}
+
+
+/* CLASSES */
+
+.top-container {
+    background-color:azure;
+    position: relative;
+    padding-top: 100px;
+}
+
+.middle-container {
+    background-color: red;
+    height: 200px;
+    width: 200px;
+}
+
+.bottom-container {
+    background-color: yellow;
+    height: 200px;
+    width: 200px;
+}
+
+/* IMAGES */
+.top-cloud {
+    position: absolute;
+    display: block;
+    right: 400px;
+    scale: 0.6;
+}
+
+.bottom-cloud {
+    position: absolute;
+    left: 500px;
+    bottom: 300px;
+}
