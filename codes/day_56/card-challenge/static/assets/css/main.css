@@ -100,10 +100,10 @@ input, select, textarea {
 
 	body {
 		background-color: #935d8c;
-		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
+		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #42047e 15%, #07f49e 85%);
+		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #42047e 15%, #07f49e 85%);
+		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #42047e 15%, #07f49e 85%);
+		background-image: url("images/overlay.png"), linear-gradient(45deg, #42047e 15%, #07f49e 85%);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -211,7 +211,7 @@ input, select, textarea {
 	}
 
 	h2 {
-		font-size: 1.5em;
+		font-size: 2.5em;
 	}
 
 	h3 {
@@ -2291,7 +2291,7 @@ input, select, textarea {
 			}
 
 		.icon.style1 {
-			color: #efa8b0;
+			color: #07f49e;
 		}
 
 		.icon.style2 {
@@ -2641,16 +2641,17 @@ input, select, textarea {
 	}
 
 		header.major h2 {
-			font-size: 2em;
+			font-size: 3em;
+			font-family: 'Ubuntu', 'sans-serif';
 			text-align: center;
 		}
 
 			header.major h2:after {
 				display: block;
 				content: '';
-				width: 3.25em;
-				height: 2px;
-				margin: 0.7em 0 1em 0;
+				width: 50%;
+				height: 10px;
+				margin: 0.7em auto 1em auto;
 				border-radius: 2px;
 			}
 
@@ -3544,13 +3545,14 @@ input, select, textarea {
 		#main dl dt {
 			color: #636363;
 		}
-
+		
+		/* Bar color gradient */
 		#main header.major h2:after {
 			background-color: #dddddd;
-			background-image: -moz-linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
-			background-image: -webkit-linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
-			background-image: -ms-linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
-			background-image: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
+			background-image: -moz-linear-gradient(90deg, #f19e18, #638b95, #195dba);
+			background-image: -webkit-linear-gradient(90deg, #f19e18, #638b95, #195dba);
+			background-image: -ms-linear-gradient(90deg, #f19e18, #638b95, #195dba);
+			background-image: linear-gradient(90deg, #f19e18, #638b95, #195dba);
 		}
 
 		#main table tbody tr {
