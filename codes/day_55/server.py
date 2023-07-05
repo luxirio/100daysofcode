@@ -31,7 +31,7 @@ def welcome():
     return '<h1>Guess the number between 0 and 9</h1>'\
     '<img src="https://media.giphy.com/media/3o7aCSPqXE5C6T8tBC/giphy.gif">'
 
-@app.route('/<int:number>')
+@app.route('/<number>')
 @check_number_decorator
 def high_or_low(number):
     return None
