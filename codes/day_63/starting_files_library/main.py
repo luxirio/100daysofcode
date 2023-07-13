@@ -42,28 +42,26 @@ def add():
         return redirect(url_for('home'))
     return render_template('add.html')
 
-
-# Update rating
-def update_rating(book_id, rating):
-    with app.app_context():
-        book_to_update = db.session.execute(db.select(Book).where(Book.id == book_id)).scalar()
-        book_to_update.rating = rating
+@app.route('/edit', methods=["GET", "POST"])
+def edit():
+    if request.method == "POST":
+        book_id = request.form['id']
+        book_to_update = db.get_or_404(Book, book_id)
+        book_to_update.rating = request.form['rating']
         db.session.commit()
+        return redirect(url_for('home'))
+    book_id = request.args.get('id')
+    book_selected = db.get_or_404(Book, book_id)
+    return render_template('edit.html', book = book_selected)
 
-@app.route("/edit/<book_id>", methods=["GET", "POST"])
-def edit(book_id):
-    result = db.session.execute(db.select(Book).order_by(Book.title))
-    all_books = result.scalars()
-    
+@app.route('/delete', methods=["GET"])
+def delete():
     if request.method == "GET":
-        print("estou aqui")
-        print(book_id)
-        return render_template('edit.html', book_id=book_id, books = all_books)
-    else:
-        new_rating = request.args.get('rating')
-        print(new_rating)
-        #update_rating(book_id=book_id, rating=new_rating)
-        return redirect(url_for('home'))    
+        book_id = request.args.get('id')
+        book_to_delete = db.get_or_404(Book, book_id)
+        db.session.delete(book_to_delete)
+        db.session.commit()
+        return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.run(debug=True)

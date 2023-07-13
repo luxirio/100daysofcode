@@ -2,20 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Rating</title>
 </head>
 <body>
-    <form action="{{(url_for('edit', book_id=book_id))}}" method="POST">
-        {{book_id}}
-        {% for book in books %}
-            {% if book['id'] == book_id %}
-                {{book['title']}}
-            {% endif %}
-        {%endfor %}
-        <p>New rating</p>
-        <input type="text" name="rating">
-        <input type="submit">
+     <form action="{{ url_for('edit') }}" method="POST">
+        <p>Book Name: {{book.title}}</p>
+        <p>Current Rating {{book.rating}}</p>
+         <input hidden="hidden" name="id" value="{{book.id}}">
+        <input name="rating" type="text" placeholder="New Rating">
+        <button type="submit">Change Rating</button>
     </form>
 </body>
 </html>
