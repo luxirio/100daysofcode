@@ -44,8 +44,6 @@ def get_random_cafe():
 def get_all_cafes():
     all_cafes = db.session.query(Cafe).all()
     return jsonify(cafes=[cafe.to_dict() for cafe in all_cafes])
-
-## HTTP POST - Create Record
 @app.route("/search", methods=["GET"])
 def search_loc():
     location = request.args.get('loc').title()
@@ -58,9 +56,61 @@ def search_loc():
         }
         return error_msg
 
+## HTTP POST - Create Record
+@app.route("/add", methods=["POST"])
+def add_cafe():
+    new_cafe = Cafe(
+    name=request.args.get('name'), 
+    map_url=request.args.get('map_url'), 
+    img_url=request.args.get('img_url'), 
+    location=request.args.get('location'),
+    seats=request.args.get('seats'),
+    has_sockets=bool(request.args.get('has_sockets')),
+    has_toilet=bool(request.args.get('has_toilet')),
+    has_wifi=bool(request.args.get('has_wifi')),
+    can_take_calls=bool(request.args.get('can_take_calls')),
+    coffee_price=request.args.get('coffee_price'),
+    )
+    db.session.add(new_cafe)
+    db.session.commit()
+    return jsonify(response={"sucess": "Successfully added the new cafe"})
+
 ## HTTP PUT/PATCH - Update Record
-
+@app.route("/update-patch/<cafe_id>", methods=["PATCH"])
+def update_cafe(cafe_id):
+    cafe_to_update = db.get_or_404(Cafe, cafe_id)
+    new_price = request.args.get('new_price')
+    if cafe_to_update:
+        cafe_to_update.coffee_price = new_price
+        db.session.commit()
+        return jsonify(response=
+                       {"success": 
+                        "Successfully updated the price"}), 200
+    else:
+        return jsonify(response={
+            "error":
+            "Not found the cafe!"}), 404
 ## HTTP DELETE - Delete Record
-
+@app.route("/report-closed/<int:cafe_id>", methods=["DELETE"])
+def delete_cafe(cafe_id):
+    api_key = "secret_key"
+    
+    if request.args.get('api-key') == api_key:
+        cafe_to_delete = db.get_or_404(Cafe, cafe_id)
+        if cafe_to_delete:
+            db.session.delete(cafe_to_delete)
+            db.session.commit()
+            return jsonify(response={
+                "Success": "Cafe successfully deleted from the database"
+            })
+        else:
+            return jsonify(response={
+                "Error":"ID not found on the database"
+            })
+    else:
+        return jsonify(response={
+            "error": "Not authorized. Make sure to provide the correct API key as an argument (apk-key)"
+        })
+    
 if __name__ == '__main__':
     app.run(debug=True)
